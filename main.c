@@ -7,16 +7,17 @@
 
 struct templateVector
 {
-    int v_cell[0];
+    int v_cell[VECTOR_length];
     int point_k;
     int point_m;
 };
 
 struct templateMatrix
 {
-    int double_cell[0][0];
+    int double_cell[MATRIX_length][MATRIX_length];
     int product;
 };
+
 
 
 int main(){
@@ -27,14 +28,16 @@ int main(){
     vector_A.point_m = 8;
 
     // Matrix A
-    struct templateMatrix matrixA;
-    /*matrixA.double_cell[MATRIX_length][MATRIX_length] = {
+  
+    struct templateMatrix matrixA = {
+     .double_cell = {
         {2, 1, 1},
         {1, 3, 2},
         {2, 3, 1}
-    };*/
+    }};
     matrixA.product = 1;
-    
+    //struct templateMatrix matrixA = { .product = 1 };
+  
     // Menu list
     int menu_number;
     printf("\n<< The Library for programs in C >>\n\n");
@@ -161,25 +164,26 @@ int main(){
         break;
 
     case 8: // Program #8
-            for (int i = 0; i < VECTOR_length; i++)
+            for (int i = 0; i < MATRIX_length; i++)
             {
-                 vector_A.v_cell[i] = i;
+                 matrixA.product *= matrixA.double_cell[i][i];
             }
 
-            for(int i = 0; i < vector_A.point_m - vector_A.point_k; i++)
-            {
-                int swap = vector_A.v_cell[vector_A.point_k];
-                vector_A.v_cell[vector_A.point_k] = vector_A.v_cell[vector_A.point_m];
-                vector_A.v_cell[vector_A.point_m] = swap;
+            printf("Size of matrix A[%d][%d]\n\n", MATRIX_length, MATRIX_length);
+
+             for(int i = 0; i < MATRIX_length; i++){
+                printf("[");
+                    for(int j = 0; j < MATRIX_length; j++){
+                        printf("%d", matrixA.double_cell[i][j]);
+
+                        if (j < 2) {
+                        printf(", ");
+                        }
+                    }
+                printf("]\n");
             }
 
-            printf("Modecication: swap start index[%d] the end index[%d]\n\n", vector_A.point_k, vector_A.point_m);
-
-            for(int i = 0; i < VECTOR_length; i++)
-            {
-                printf("Index vector [%d]: value %d\n", i, vector_A.v_cell[i]);
-
-            }          
+            printf("\nProduct for array -> value: %d\n", matrixA.product);            
         break;            
     default:
         break;
