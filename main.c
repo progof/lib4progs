@@ -16,6 +16,7 @@ struct templateMatrix
 {
     int double_cell[MATRIX_length][MATRIX_length];
     int product;
+    int sum_squares;
 };
 
 
@@ -36,7 +37,7 @@ int main(){
         {2, 3, 1}
     }};
     matrixA.product = 1;
-    //struct templateMatrix matrixA = { .product = 1 };
+    matrixA.sum_squares = 1;
   
     // Menu list
     int menu_number;
@@ -49,10 +50,10 @@ int main(){
     printf("6) ... w wektorze o rozmiarze N zamienia ze soba zawartosci elementow rowno odleglych od jego pierwszego elementu \ni k-ego od konca elementu wektora (czyli zamienia pierwszy element z k-tym od konca, drugi z (k+1)-szym od konca itd).  \n\n");
     printf("7) ... w wektorze o rozmiarze N zamienia ze soba zawartosci elementow o indeksach od k do m na podobnej zasadzie jak \nw zadaniach 4,5,6 czyli zamienia zawartosc k-tego z zawartoscia m-tego, (k+1)-szego z (m-1)-szego itd. \n\n");
     printf("8) ... oblicza iloczyn elementow polozonych na przekatnej glownej macierzy kwadratowej o rozmiarze N.\n\n");
+    printf("9) ... oblicza sume kwadratow elementow na tej przekatnej macierzy kwadratowej , ktora znajduje sie bezposrednio nad przekatna glowna.\n\n");
     printf("\n\n");
     printf("\n\n");
-    printf("\n\n");
-    printf("\nTo start the program, select its number:\n");
+    printf("\nTo start the program, select its number:");
     scanf("%d", &menu_number);
 
     switch (menu_number)
@@ -183,8 +184,31 @@ int main(){
                 printf("]\n");
             }
 
-            printf("\nProduct for array -> value: %d\n", matrixA.product);            
-        break;            
+            printf("\nProduct for matrix -> value: %d\n", matrixA.product);            
+        break;
+
+    case 9: // Program #9
+            for (int i = 0; i < MATRIX_length; i++)
+            {
+                 matrixA.sum_squares *= matrixA.double_cell[i][i] * matrixA.double_cell[i][i];
+            }
+
+            printf("Size of matrix A[%d][%d]\n\n", MATRIX_length, MATRIX_length);
+
+             for(int i = 0; i < MATRIX_length; i++){
+                printf("[");
+                    for(int j = 0; j < MATRIX_length; j++){
+                        printf("%d", matrixA.double_cell[i][j]);
+
+                        if (j < 2) {
+                        printf(", ");
+                        }
+                    }
+                printf("]\n");
+            }
+
+            printf("\nSum of squares for matrix -> value: %d\n", matrixA.sum_squares);            
+        break;                 
     default:
         break;
     }
