@@ -51,6 +51,22 @@ int main(){
     matrixB.product = 1;
     matrixB.sum_squares = 1;
     matrixB.sum = 1;
+
+    // Matrix C
+    struct templateMatrix matrixC = {
+     .double_cell = {
+        {0, 0, 0},
+        {0, 0, 0},
+        {0, 0, 0}
+    }};
+
+    // Matrix D
+    struct templateMatrix matrixD = {
+     .double_cell = {
+        {1, -2, 4},
+        {2, -1, 3},
+        {3, -1, 2}
+    }};
   
     // Menu list
     int menu_number;
@@ -68,8 +84,8 @@ int main(){
     printf("11)	... oblicza sume kwadratow elementow macierzy trojkatnej dolnej o rozmiarze N (tj. elementow ponizej przekatnej glownej).\n\n");
     printf("12)	... oblicza sume elementow macierzy o rozmiarze N z pominieciam elementow na przekatnej glownej.\n\n");
     printf("13)	... wylicza elementy macierzy powstalej przez pomnozenie macierzy kwadratowej [A] o rozmiarze N przez wektor (macierz jednowymiarowa) o rozmiarze N.\n\n");
-    printf("\n\n");
-    printf("\n\n");
+    printf("14)	... wylicza elementy macierzy powstalej przez pomnozenie macierzy kwadratowej o rozmiarze N przez sama siebie ([C] = [A] * [A]).\n\n");
+    printf("15)	... wylicza elementy macierzy powstalej przez pomnozenie dwoch macierzy kwadratowych [A] i [D] o rozmiarze N przez sama siebie ([C] = [A] * [D]).\n\n");
     printf("\n\n");
     printf("\n\n");
     printf("\n\n");
@@ -333,6 +349,101 @@ int main(){
                 }
                 printf("Index the matrix B[%d] -> value[%d]\n", i, matrixB.double_cell[i][i]);
             }
+
+        break;    
+
+    case 14: // Program #14
+            printf("\nProgram #14\n\n");
+
+            for(int i = 0; i < MATRIX_length; i++){
+                for(int j = 0; j < MATRIX_length; j++){
+                    matrixC.double_cell[i][j] = 0;
+
+                    for(int k = 0; k < MATRIX_length; k++){
+                       matrixC.double_cell[i][j] += matrixA.double_cell[i][k] * matrixA.double_cell[k][j];
+                    }
+                }
+            }
+
+            printf("Matrix[A]\n\n");
+
+            for(int i = 0; i < MATRIX_length; i++){
+                 printf("[");
+                 for(int j = 0; j < MATRIX_length; j++){
+                     printf("%d", matrixA.double_cell[i][j]);
+                     if (j < 2) {
+                         printf(", ");
+                    }
+                }
+                printf("]\n");
+            }
+
+            printf("Matrix[C] = Matrix[A] * Matrix[A]\n\n");
+            for(int i = 0; i < MATRIX_length; i++){
+                printf("[");
+                for(int j = 0; j < MATRIX_length; j++){
+                    printf("%d", matrixC.double_cell[i][j]);
+                    if (j < 2) {
+                    printf(", ");
+                    }
+                }
+                printf("]\n");
+            }
+
+
+        break; 
+
+    case 15: // Program #15
+            printf("\nProgram #15\n\n");
+
+            for(int i = 0; i < MATRIX_length; i++){
+                for(int j = 0; j < MATRIX_length; j++){
+                    matrixC.double_cell[i][j] = 0;
+
+                    for(int k = 0; k < MATRIX_length; k++){
+                       matrixC.double_cell[i][j] += matrixA.double_cell[i][k] * matrixD.double_cell[k][j];
+                    }
+                }
+            }
+
+            printf("Matrix[A]\n\n");
+
+            for(int i = 0; i < MATRIX_length; i++){
+                 printf("[");
+                 for(int j = 0; j < MATRIX_length; j++){
+                     printf("%d", matrixA.double_cell[i][j]);
+                     if (j < 2) {
+                         printf(", ");
+                    }
+                }
+                printf("]\n");
+            }
+
+            printf("Matrix[D]\n\n");
+
+            for(int i = 0; i < MATRIX_length; i++){
+                 printf("[");
+                 for(int j = 0; j < MATRIX_length; j++){
+                     printf("%d", matrixD.double_cell[i][j]);
+                     if (j < 2) {
+                         printf(", ");
+                    }
+                }
+                printf("]\n");
+            }
+
+            printf("Matrix[C] = Matrix[A] * Matrix[D]\n\n");
+            for(int i = 0; i < MATRIX_length; i++){
+                printf("[");
+                for(int j = 0; j < MATRIX_length; j++){
+                    printf("%d", matrixC.double_cell[i][j]);
+                    if (j < 2) {
+                    printf(", ");
+                    }
+                }
+                printf("]\n");
+            }
+
 
         break;    
 
