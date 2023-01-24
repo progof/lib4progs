@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define VECTOR_length 12
+#define VECTOR_length 3
 #define MATRIX_length 3
 
 struct templateVector
@@ -17,27 +17,40 @@ struct templateMatrix
     int double_cell[MATRIX_length][MATRIX_length];
     int product;
     int sum_squares;
+    int sum;
 };
-
 
 
 int main(){
 
     // Vector A
-    struct templateVector vector_A;
+    struct templateVector vector_A = { 
+        .v_cell = { 1, 2, 3}
+    };
     vector_A.point_k = 3;
     vector_A.point_m = 8;
 
     // Matrix A
-  
     struct templateMatrix matrixA = {
      .double_cell = {
         {2, 1, 1},
         {1, 3, 2},
-        {2, 3, 1}
+        {2, 2, 1}
     }};
     matrixA.product = 1;
     matrixA.sum_squares = 1;
+    matrixA.sum = 1;
+
+    // Matrix B
+    struct templateMatrix matrixB = {
+     .double_cell = {
+        {1, 1, 1},
+        {1, 1, 1},
+        {1, 1, 1}
+    }};
+    matrixB.product = 1;
+    matrixB.sum_squares = 1;
+    matrixB.sum = 1;
   
     // Menu list
     int menu_number;
@@ -51,14 +64,27 @@ int main(){
     printf("7) ... w wektorze o rozmiarze N zamienia ze soba zawartosci elementow o indeksach od k do m na podobnej zasadzie jak \nw zadaniach 4,5,6 czyli zamienia zawartosc k-tego z zawartoscia m-tego, (k+1)-szego z (m-1)-szego itd. \n\n");
     printf("8) ... oblicza iloczyn elementow polozonych na przekatnej glownej macierzy kwadratowej o rozmiarze N.\n\n");
     printf("9) ... oblicza sume kwadratow elementow na tej przekatnej macierzy kwadratowej , ktora znajduje sie bezposrednio nad przekatna glowna.\n\n");
+    printf("10) ... oblicza sume kwadratow elementow macierzy trojkatnej gornej o rozmiarze N (tj. elementow powyzej przekatnej glownej).\n\n");
+    printf("11)	... oblicza sume kwadratow elementow macierzy trojkatnej dolnej o rozmiarze N (tj. elementow ponizej przekatnej glownej).\n\n");
+    printf("12)	... oblicza sume elementow macierzy o rozmiarze N z pominieciam elementow na przekatnej glownej.\n\n");
+    printf("13)	... wylicza elementy macierzy powstalej przez pomnozenie macierzy kwadratowej [A] o rozmiarze N przez wektor (macierz jednowymiarowa) o rozmiarze N.\n\n");
     printf("\n\n");
     printf("\n\n");
-    printf("\nTo start the program, select its number:");
+    printf("\n\n");
+    printf("\n\n");
+    printf("\n\n");
+    printf("\n\n");
+    printf("\n\n");
+    printf("\n\n");
+
+    printf("\n\nTo start the program, select its number:");
     scanf("%d", &menu_number);
 
     switch (menu_number)
     {
     case 1: // Program #1
+            printf("\nProgram #1\n\n");
+
             for (int i = 0; i < VECTOR_length; i++)
             {
                  vector_A.v_cell[i] = i;
@@ -67,6 +93,8 @@ int main(){
         break;
 
     case 2: // Program #2
+            printf("\nProgram #2\n\n");
+
             for (int i = 0; i < VECTOR_length; i++)
             {
                  vector_A.v_cell[i] = i + 1;
@@ -75,6 +103,8 @@ int main(){
         break;
 
      case 3: // Program #3
+            printf("\nProgram #3\n\n");
+
             for (int i = 0; i < VECTOR_length; i++)
             {
                  vector_A.v_cell[i] = VECTOR_length - i - 1;
@@ -83,6 +113,8 @@ int main(){
         break;
 
     case 4: // Program #4
+            printf("\nProgram #4\n\n");
+
             for (int i = 0; i < VECTOR_length; i++)
             {
                  vector_A.v_cell[i] = i;
@@ -103,6 +135,8 @@ int main(){
         break; 
 
     case 5: // Program #5
+            printf("\nProgram #5\n\n");
+
             for (int i = 0; i < VECTOR_length; i++)
             {
                  vector_A.v_cell[i] = i;
@@ -123,6 +157,8 @@ int main(){
         break; 
 
     case 6: // Program #6
+            printf("\nProgram #6\n\n");
+
             for (int i = 0; i < VECTOR_length; i++)
             {
                  vector_A.v_cell[i] = i;
@@ -143,6 +179,8 @@ int main(){
         break; 
 
     case 7: // Program #7
+            printf("\nProgram #7\n\n");
+
             for (int i = 0; i < VECTOR_length; i++)
             {
                  vector_A.v_cell[i] = i;
@@ -165,6 +203,8 @@ int main(){
         break;
 
     case 8: // Program #8
+            printf("\nProgram #8\n\n");
+
             for (int i = 0; i < MATRIX_length; i++)
             {
                  matrixA.product *= matrixA.double_cell[i][i];
@@ -188,6 +228,8 @@ int main(){
         break;
 
     case 9: // Program #9
+            printf("\nProgram #9\n\n");
+
             for (int i = 0; i < MATRIX_length; i++)
             {
                  matrixA.sum_squares *= matrixA.double_cell[i][i] * matrixA.double_cell[i][i];
@@ -208,7 +250,92 @@ int main(){
             }
 
             printf("\nSum of squares for matrix -> value: %d\n", matrixA.sum_squares);            
-        break;                 
+        break; 
+
+    case 10: // Program #10
+            printf("\nProgram #10\n\n");
+
+            for (int i = 0; i < MATRIX_length; i++)
+            {
+                 matrixA.sum_squares *= matrixA.double_cell[0][i] * matrixA.double_cell[0][i];
+            }
+
+            printf("Size of matrix A[%d][%d]\n\n", MATRIX_length, MATRIX_length);
+
+             for(int i = 0; i < MATRIX_length; i++){
+                printf("[");
+                    for(int j = 0; j < MATRIX_length; j++){
+                        printf("%d", matrixA.double_cell[i][j]);
+
+                        if (j < 2) {
+                        printf(", ");
+                        }
+                    }
+                printf("]\n");
+            }
+
+            printf("\nSum of squares for matrix -> value: %d\n", matrixA.sum_squares);            
+        break;
+
+    case 11: // Program #11
+            printf("\nProgram #11\n\n");
+
+            for (int i = 0; i < MATRIX_length; i++)
+            {
+                 matrixA.sum_squares *= matrixA.double_cell[2][i] * matrixA.double_cell[2][i];
+            }
+
+            printf("Size of matrix A[%d][%d]\n\n", MATRIX_length, MATRIX_length);
+
+             for(int i = 0; i < MATRIX_length; i++){
+                printf("[");
+                    for(int j = 0; j < MATRIX_length; j++){
+                        printf("%d", matrixA.double_cell[i][j]);
+
+                        if (j < 2) {
+                        printf(", ");
+                        }
+                    }
+                printf("]\n");
+            }
+
+            printf("\nSum of squares for matrix -> value: %d\n", matrixA.sum_squares);            
+        break; 
+    
+    case 12: // Program #12
+            printf("\nProgram #12\n\n");
+
+            matrixA.sum = (matrixA.double_cell[0][1] + matrixA.double_cell[0][2]) + (matrixA.double_cell[1][0]+matrixA.double_cell[1][2]) + (matrixA.double_cell[2][0]+matrixA.double_cell[2][1]);
+
+            printf("Size of matrix A[%d][%d]\n\n", MATRIX_length, MATRIX_length);
+
+             for(int i = 0; i < MATRIX_length; i++){
+                printf("[");
+                    for(int j = 0; j < MATRIX_length; j++){
+                        printf("%d", matrixA.double_cell[i][j]);
+
+                        if (j < 2) {
+                        printf(", ");
+                        }
+                    }
+                printf("]\n");
+            }
+
+            printf("\nSum matrix -> value: %d\n", matrixA.sum);            
+        break;
+
+    case 13: // Program #13
+            printf("\nProgram #13\n\n");
+
+            for(int i = 0; i < MATRIX_length; i++){
+                for(int j = 0; j < MATRIX_length; j++){
+                   matrixB.double_cell[i][i] += matrixA.double_cell[i][j]*vector_A.v_cell[j];
+                }
+                printf("Index the matrix B[%d] -> value[%d]\n", i, matrixB.double_cell[i][i]);
+            }
+
+        break;    
+
     default:
         break;
     }
