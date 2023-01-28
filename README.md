@@ -1,5 +1,5 @@
 # lib4progs
 
 ```bash
-make lib4progs
+make run
 ```
