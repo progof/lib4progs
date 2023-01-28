@@ -5,6 +5,7 @@ int main(){
     // Menu list
     int menu_number;
 
+
     printf("\n<< The Library for programs in C >>\n\n");
     printf("1) ... wpisuje do kazdego elementu wektora o rozmiarze N wartosc rowna jego indeksowi.\n\n");
     printf("2) ... wpisuje do kazdego elementu wektora o rozmiarze N wartosc wieksza o jeden od jego indeksu.\n\n");
