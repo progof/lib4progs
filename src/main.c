@@ -4,8 +4,7 @@ int main(){
   
     // Menu list
     int menu_number;
-    
-     menu_task();
+
      printf("\n<< The Library for programs in C >>\n\n");
 
      program_task_1();

@@ -14,27 +14,7 @@ struct templateMatrix
 {
 	int double_cell[MATRIX_length][MATRIX_length];
 };
-
-void menu_task()
-{
-	 void program_task_1();
-     void program_task_2();
-     void program_task_3();
-     void program_task_4();
-     void program_task_5();
-     void program_task_6();
-     void program_task_7();
-     void program_task_8();
-     void program_task_9();
-     void program_task_10();
-     void program_task_11();
-     void program_task_12();
-     void program_task_13();
-     void program_task_14();
-     void program_task_15();
-}
-
-    
+ 
 /* ---------------------------------------------------------------------------------------------------------*/
 // Program code #1
 void program_task_1()
