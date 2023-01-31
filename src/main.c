@@ -89,6 +89,7 @@ int main(){
         break;  
 
     default:
+            printf("Error: There is no such item in the menu :/\n");
         break;
     }
 
