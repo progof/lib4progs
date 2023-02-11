@@ -168,7 +168,8 @@ void program_7()
 {
 	printf("\nProgram #7\n\n");
 	struct templateVector vector_A = {
-			.v_cell = {1, 2, 3, 4, 5, 6, 7, 8, 9}};
+		.v_cell = {1, 2, 3, 4, 5, 6, 7, 8, 9}
+	};
 
 	int point_k = 4;
 	int point_m = 7;

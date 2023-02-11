@@ -3,7 +3,7 @@
 int main(){
   
     // Menu list
-    int menu_number;
+    short menu_number;
 
      printf("\n<< The Library for programs in C >>\n\n");
 
@@ -89,7 +89,7 @@ int main(){
         break;  
 
     default:
-            printf("Error: There is no such item in the menu :/\n");
+            printf("\n%sError: There is no such item in the menu :/\n", RED);
         break;
     }
 

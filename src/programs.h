@@ -2,17 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define RED "\x1b[31m"
+
 #define VECTOR_length 10
 #define MATRIX_length 3
 
 struct templateVector
 {
-	int v_cell[VECTOR_length];
+	short v_cell[VECTOR_length];
 };
 
 struct templateMatrix
 {
-	int double_cell[MATRIX_length][MATRIX_length];
+	short double_cell[MATRIX_length][MATRIX_length];
 };
 
 void program_task_1(void);
